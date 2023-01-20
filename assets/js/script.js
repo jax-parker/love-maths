@@ -27,12 +27,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 })
+// this is a docstring - when the function is called you can hover over the call to get a description of the
+//function without having to scroll back to find the function.
 
-
+/**The main game 'loop, called when the script is first loaded
+ * *and after the user's answer has been processed.
+ */
 
 function runGame() {
-
+// Creates two random numbers beteen 1 and 25 (floor =round to whole number and plus one so that zero does not appear)
+let num1= Math.floor(Math.random() *25)+1;
+let num2= Math.floor(Math.random() *25)+1;
 }
+
 
 function checkAnswer() {
 
