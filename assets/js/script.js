@@ -71,10 +71,14 @@ function checkAnswer() {
     //This is a short way of saying if isCorrect = to true.
     if (isCorrect) {
         alert("Hey! You got it right! :D");
+        //Calls your increment score function - hover over to see.
+        incrementScore();
     // If incorrect use template literals to tell them what they entered and what is correct pulling the 1st value out of our
     //correct calculated correct answer array.
     } else {
         alert(`Awwww.... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+        //Calls your increment wrong answer function - hover over to see.
+        incrementWrongAnswer();
     }
 
     runGame(calculatedAnswer[1]);
@@ -101,11 +105,26 @@ function calculateCorrectAnswer() {
 }
 }
 
+/**
+ * Gets the current score from the Dom and increments it by 1
+ */
 function incrementScore() {
+    //Retrieve the score from the Dom with the Id of score and assign it to a new variable oldScore
+    let oldScore = parseInt(document.getElementById("score").innerText);
+    //Write it back to the Dom after you've incremented (++) by one
+    document.getElementById("score").innerText = ++oldScore;
 
 }
 
+/**
+ * Gets the tally of incorrect answers from the Dom and increments it by 1
+ */
 function incrementWrongAnswer() {
+
+    //Retrieve the score from the Dom with the Id of incorrect and assign it to a new variable 
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    //Write it back to the Dom after you've incremented (++) by one
+    document.getElementById("incorrect").innerText = ++oldScore;
 
 }
 //The two arguments the function will accept are operand 1 and 2
