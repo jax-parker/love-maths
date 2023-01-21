@@ -39,10 +39,14 @@ function runGame(gameType) {
 let num1= Math.floor(Math.random() *25)+1;
 let num2= Math.floor(Math.random() *25)+1;
 
-//if the gameType is equal to addition then display our addition question
+//if the gameType is equal to addition (taken from button data type) then display our addition question
 if (gameType === "addition") {
     displayAdditionQuestion(num1, num2);
-} else {
+    //else if the gameType is equal to multiply(taken from button data type) then display our addition question
+} else if (gameType==="multiply") {
+    displayMultiplyQuestion(num1, num2);
+}
+else {
     // if an error occurs it will alert the user
     alert(`Unknown game type: ${gameType}`);
     // throw will stop the game running and console.log this message
@@ -97,6 +101,9 @@ function calculateCorrectAnswer() {
     // this parts checks if the operator is a plus sign, if correct it will calculate the correct answer
     if (operator === "+") {
         return [operand1 + operand2, "addition"];
+    //this will check if the operator is a x sign, if it is it will calculate the correct answer
+    } else if (operator === "x") {
+        return [operand1 * operand2, "multiply"];
     
     // this part will show the user an error message if not and console log an error message
     } else {
@@ -141,8 +148,12 @@ function displaySubtractQuestion() {
 
 }
 
-function displayMultiplyQuestion() {
-
+function displayMultiplyQuestion(operand1, operand2) {
+     //Get the element that has the Id of operand1 & 2 and set the text content to our number
+     document.getElementById('operand1').textContent = operand1;
+     document.getElementById('operand2').textContent = operand2;
+     //Get the element that has the Id of operator and set to multiply sign
+     document.getElementById('operator').textContent = "x";
 }
 
 function displayDivisionQuestion() {
