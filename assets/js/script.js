@@ -45,8 +45,9 @@ if (gameType === "addition") {
     //else if the gameType is equal to multiply(taken from button data type) then display our addition question
 } else if (gameType==="multiply") {
     displayMultiplyQuestion(num1, num2);
-}
-else {
+} else if (gameType === "subtract") {
+    displaySubtractQuestion(num1, num2);
+}else {
     // if an error occurs it will alert the user
     alert(`Unknown game type: ${gameType}`);
     // throw will stop the game running and console.log this message
@@ -104,6 +105,9 @@ function calculateCorrectAnswer() {
     //this will check if the operator is a x sign, if it is it will calculate the correct answer
     } else if (operator === "x") {
         return [operand1 * operand2, "multiply"];
+        //this will check if the operator is a - sign, if it is it will calculate the correct answer
+    } else if (operator === "-") {
+        return [operand1 - operand2, "subtract"];
     
     // this part will show the user an error message if not and console log an error message
     } else {
@@ -144,8 +148,18 @@ function displayAdditionQuestion(operand1, operand2) {
     document.getElementById('operator').textContent = "+";
 }
 
-function displaySubtractQuestion() {
+function displaySubtractQuestion(operand1, operand2) {
+     //Get the element that has the Id of operand1 & 2 and set the text content to our number
+     //This is a ternary operator which checks if the first number is larger than the second.
+     //The condition you want to check goes before the ? Which is bigger op1 or op2?
+     //If op1 is bigger return that - if op2 is bigger return that (colon stands for else).
+     document.getElementById("operand1").textContent = operand1 > operand2 ? operand1 : operand2;
 
+     // Condition remains the same as we want the first number bigger so we don't return a minus answer.
+     document.getElementById('operand2').textContent = operand1 > operand2 ? operand2 : operand1;
+
+     //Get the element that has the Id of operator and set to minus sign
+     document.getElementById('operator').textContent = "-";
 }
 
 function displayMultiplyQuestion(operand1, operand2) {
