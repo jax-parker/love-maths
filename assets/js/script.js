@@ -25,6 +25,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
         });
     }
+    //This will allow the user to use Enter key to submit thier answer.
+    //Reference the id of the place where you want to 'listen. Add an Event Listener to it. 
+    // Add what you're listening for - in this case key down (a key press). 
+    //Then check the property of that object event(key preperty) to see if enter was pressed. If it was
+    
+    document.getElementById("answer-box").addEventListener("keydown", function(event){
+        //Then call a function sending in an event object. If the key pressed was Enter then
+        if (event.key === "Enter") {
+        // call our check answer function. Then check the answer.
+            checkAnswer();
+        }
+    })
+
+
     runGame("addition");
 });
 // this is a docstring - when the function is called you can hover over the call to get a description of the
@@ -35,6 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 //Pass the gameType into the function as an argument
 function runGame(gameType) {
+   
+    //Each time our run game function is called it will set the value of our answer box to an empty string
+    //and empty it of what ever was there before.
+document.getElementById("answer-box").value = "";
+
+//'Setting the focus' This puts the cursor back in the box after you submit your answer
+//So whichever Id you use, that is where the cursor will be after submit.
+document.getElementById("answer-box").focus();
+
 // Creates two random numbers beteen 1 and 25 (floor =round to whole number and plus one so that zero does not appear)
 let num1= Math.floor(Math.random() *25)+1;
 let num2= Math.floor(Math.random() *25)+1;
